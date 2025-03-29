@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Amarillas 🌼</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #ffdf5e, #ffb703);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        /* Mensaje con efecto */
+        .mensaje {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(255, 255, 0, 0.8);
+            opacity: 0;
+            max-width: 80%;
+            animation: aparecer 3s ease-in-out forwards;
+        }
+
+        @keyframes aparecer {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Flores animadas */
+        .flor {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/30/Sunflower_from_Silesia2.jpg');
+            background-size: cover;
+            opacity: 0;
+            animation: flotar 6s infinite ease-in-out, desvanecer 6s infinite;
+        }
+
+        @keyframes flotar {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes desvanecer {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mensaje">🌼 Te envío estas flores amarillas, no reniegues mrd 😆<br>Si lo haces, imagina mi cara y golpéame, pero no abuses xd 🌼</div>
+
+    <script>
+        function crearFlor() {
+            const flor = document.createElement("div");
+            flor.classList.add("flor");
+            document.body.appendChild(flor);
+
+            const x = Math.random() * window.innerWidth;
+            const duracion = 5 + Math.random() * 3;
+
+            flor.style.left = `${x}px`;
+            flor.style.animationDuration = `${duracion}s`;
+
+            setTimeout(() => { flor.remove(); }, duracion * 1000);
+        }
+
+        setInterval(crearFlor, 500); // Crea flores cada 500ms
+    </script>
+</body>
+</html>
